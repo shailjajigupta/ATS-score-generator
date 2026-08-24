@@ -1,0 +1,401 @@
+/* ==========================================================================
+   Split Expenses — Design System
+   Palette: near-black ground, orange accent, mono ledger numerals.
+   ========================================================================== */
+
+:root {
+  --bg: #0b0b0d;
+  --surface: #17171b;
+  --surface-raised: #1e1e23;
+  --border: #2a2a30;
+  --border-soft: #232328;
+
+  --orange: #ff7a1a;
+  --orange-dim: #d95f00;
+  --orange-soft: rgba(255, 122, 26, 0.12);
+
+  --text: #f2f0ea;
+  --text-muted: #96959c;
+  --text-faint: #5f5f68;
+
+  --green: #3ecf8e;
+  --green-soft: rgba(62, 207, 142, 0.12);
+  --red: #ff5a5a;
+  --red-soft: rgba(255, 90, 90, 0.12);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --radius: 10px;
+  --radius-lg: 14px;
+
+  /* Bootstrap variable overrides so built-in components pick up the theme */
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--text);
+  --bs-body-font-family: var(--font-body);
+  --bs-border-color: var(--border);
+  --bs-primary: var(--orange);
+  --bs-primary-rgb: 255, 122, 26;
+  --bs-link-color: var(--orange);
+  --bs-link-hover-color: var(--orange-dim);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--orange);
+}
+a:hover {
+  color: var(--orange-dim);
+}
+
+/* Numbers get the mono ledger treatment wherever money appears */
+.money,
+.fw-bold {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background-color: var(--bg) !important;
+  border-bottom: 1px solid var(--border);
+}
+.navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text) !important;
+  letter-spacing: -0.01em;
+}
+.navbar-brand .accent {
+  color: var(--orange);
+}
+.navbar .nav-link {
+  color: var(--text-muted) !important;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+.navbar .nav-link:hover {
+  color: var(--text) !important;
+}
+.navbar .nav-link.active {
+  color: var(--orange) !important;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: var(--radius);
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--orange);
+  border-color: var(--orange);
+  color: #0b0b0d;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--orange-dim) !important;
+  border-color: var(--orange-dim) !important;
+  color: #0b0b0d !important;
+}
+
+.btn-outline-primary {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline-primary:hover {
+  background-color: var(--orange);
+  border-color: var(--orange);
+  color: #0b0b0d;
+}
+
+.btn-outline-light {
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-outline-light:hover {
+  background-color: var(--surface-raised);
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
+.btn-outline-danger {
+  color: var(--red);
+  border-color: var(--red);
+}
+.btn-outline-danger:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: #0b0b0d;
+}
+
+.btn-success {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: #0b0b0d;
+}
+.btn-success:hover {
+  background-color: #33b57c;
+  border-color: #33b57c;
+  color: #0b0b0d;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text);
+}
+.card-title {
+  font-family: var(--font-display);
+}
+.card-text,
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.group-card {
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.group-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--orange);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.group-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange-dim);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+.group-card:hover::before {
+  opacity: 1;
+}
+
+/* ---------- Forms ---------- */
+.form-control,
+.form-select {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+}
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--surface-raised);
+  border-color: var(--orange);
+  color: var(--text);
+  box-shadow: 0 0 0 0.2rem var(--orange-soft);
+}
+.form-control::placeholder {
+  color: var(--text-faint);
+}
+.form-label {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.form-text {
+  color: var(--text-faint);
+}
+.form-check-input {
+  background-color: var(--surface-raised);
+  border-color: var(--border);
+}
+.form-check-input:checked {
+  background-color: var(--orange);
+  border-color: var(--orange);
+}
+.form-check-label {
+  color: var(--text);
+}
+
+/* ---------- Alerts ---------- */
+.alert {
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+}
+.alert-danger {
+  background-color: var(--red-soft);
+  border-color: rgba(255, 90, 90, 0.3);
+  color: #ffb3b3;
+}
+.alert-info {
+  background-color: var(--orange-soft);
+  border-color: rgba(255, 122, 26, 0.3);
+  color: #ffc999;
+}
+.btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* ---------- Badges ---------- */
+.badge.bg-light {
+  background-color: var(--surface-raised) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border) !important;
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* ---------- List groups ---------- */
+.list-group-item {
+  background-color: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* ---------- Balance cards (signature element) ---------- */
+.balance-card {
+  border: 1px dashed var(--border) !important;
+  background: var(--surface);
+  position: relative;
+}
+.balance-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 56%;
+  border-top: 1px dashed var(--border);
+}
+.balance-card .card-body {
+  position: relative;
+  z-index: 1;
+}
+.balance-card .money-line {
+  font-family: var(--font-mono);
+}
+.balance-positive {
+  border-color: rgba(62, 207, 142, 0.35) !important;
+}
+.balance-negative {
+  border-color: rgba(255, 90, 90, 0.35) !important;
+}
+
+.stat-tile {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+}
+.stat-tile .stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.stat-tile .stat-value {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+}
+.stat-tile.owe {
+  background: var(--red-soft);
+  border-color: rgba(255, 90, 90, 0.3);
+}
+.stat-tile.owe .stat-value {
+  color: var(--red);
+}
+.stat-tile.owed {
+  background: var(--green-soft);
+  border-color: rgba(62, 207, 142, 0.3);
+}
+.stat-tile.owed .stat-value {
+  color: var(--green);
+}
+
+/* ---------- Tabs (used on Group Details page) ---------- */
+.tab-strip {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+.tab-strip button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.tab-strip button:hover {
+  color: var(--text);
+}
+.tab-strip button.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+.tab-strip button .tab-count {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+/* ---------- Bootstrap text/bg utility overrides ---------- */
+.text-success {
+  color: var(--green) !important;
+}
+.text-danger {
+  color: var(--red) !important;
+}
+.text-secondary {
+  color: var(--text-faint) !important;
+}
+.text-primary {
+  color: var(--orange) !important;
+}
+.bg-light {
+  background-color: var(--surface-raised) !important;
+}
+
+/* ---------- Spinner ---------- */
+.spinner-border.text-primary {
+  color: var(--orange) !important;
+}
+
+/* ---------- Scrollbar (subtle, matches theme) ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-faint);
+}

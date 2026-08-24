@@ -1,0 +1,192 @@
+/* App-specific styles for the Resume-JD Analyzer, building on global.css */
+
+.hero {
+  padding: 3rem 0 1.5rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+.hero .accent {
+  color: var(--orange);
+}
+.hero p {
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ---------- Input mode toggle (paste vs upload) ---------- */
+.input-mode-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+.input-mode-toggle button {
+  background: var(--surface);
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.input-mode-toggle button.active {
+  background: var(--orange);
+  color: #0b0b0d;
+}
+.input-mode-toggle button:not(.active):hover {
+  background: var(--surface-raised);
+  color: var(--text);
+}
+
+/* ---------- File dropzone ---------- */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  background: var(--surface-raised);
+}
+.dropzone:hover,
+.dropzone.dragging {
+  border-color: var(--orange);
+  background: var(--orange-soft);
+}
+.dropzone .dz-filename {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  word-break: break-all;
+}
+.dropzone input[type="file"] {
+  display: none;
+}
+
+textarea.form-control {
+  min-height: 220px;
+  resize: vertical;
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+/* ---------- Score ring (signature element) ---------- */
+.score-ring-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.score-ring {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.score-ring svg {
+  transform: rotate(-90deg);
+}
+.score-ring .ring-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 10;
+}
+.score-ring .ring-value {
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+.score-ring .ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-ring .ring-number {
+  font-family: var(--font-mono);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.score-ring .ring-percent {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+.score-ring-caption {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* small score rings for skills/experience sub-scores */
+.score-ring.small {
+  width: 100px;
+  height: 100px;
+}
+.score-ring.small .ring-number {
+  font-size: 1.3rem;
+}
+
+/* ---------- Skill pills ---------- */
+.skill-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.skill-pill {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.skill-pill.matched {
+  background: var(--green-soft);
+  border-color: rgba(62, 207, 142, 0.35);
+  color: var(--green);
+}
+.skill-pill.missing {
+  background: var(--red-soft);
+  border-color: rgba(255, 90, 90, 0.35);
+  color: var(--red);
+}
+
+/* ---------- Suggestions block ---------- */
+.suggestions-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--orange);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  white-space: pre-line;
+  line-height: 1.7;
+}
+
+.section-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.section-label .dash {
+  width: 20px;
+  height: 2px;
+  background: var(--orange);
+  display: inline-block;
+}
